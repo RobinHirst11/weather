@@ -99,7 +99,9 @@ function displayLocationMenu(locations) {
 async function fetchWeatherData(location) {
     const weatherResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${location.latitude}&longitude=${location.longitude}&hourly=temperature_2m,precipitation`);
     const weatherData = await weatherResponse.json();
-    weatherDataElement.textContent = JSON.stringify(weatherData, null, 2);
+    weatherDataElement.style.display = 'none'; // This hides the element
+
+    
     createCharts(weatherData);
     document.querySelector('.button-1').style.marginLeft = '10px';
 }
